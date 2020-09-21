@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/img/favicon.ico" />
+    <title>Shooting Numbers</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>SHOOTING NUMBERS</p>
+      </header>
+
+      <div class="tutorial-container">
+        <div class="tutorial">
+          <p id="title">TUTORIAL</p>
+          <p id="instructions">
+            Welcome to Shooting Numbers! Let's learn how to play!
+          </p>
+          <img
+            id="insImg"
+            width="150px"
+            alt="Instruction images"
+            style="visibility: hidden;"
+          />
+          <div class="buttons">
+            <button id="skip" style="background-color: red;">
+              <p>SKIP</p>
+            </button>
+            <button id="next" style="background-color: rgb(20, 214, 20);">
+              <p style="color: white;">NEXT</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="score-container">
+        <div class="score-form">
+          <p id="title">
+            Type your name then <span style="color: red;">CLICK ENTER</span> to
+            be on the leaderboard!
+          </p>
+          <p style="color: rgb(0, 132, 255);">Your Score:</p>
+          <p id="player-score"></p>
+
+          <form action="/leaderboard/submit" method="POST" autocomplete="off">
+            <label for="playername">Name: </label>
+            <input type="text" name="playername" id="playername" required />
+            <button type="submit" id="submit">
+              <p style="color: white;">ENTER</p>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <main>
+        <div id="gameDiv" style="visibility: hidden;"></div>
+
+        <div class="leaderboard-container">
+          <div class="leaderboard">
+            <p id="title">LEADERBOARD</p>
+            <p style="margin-top: 5%; text-align: center;">
+              <span style="margin-right: 10%; color: aqua;">PLAYERS:</span>
+              <span style="margin-left: 10%; color: #32cd32;">SCORE:</span>
+            </p>
+            <div class="players-display">
+              <% playerData %> <%for(let i = 0; i < playerData.length; i ++) {
+              %>
+              <p>
+                <span style="color: orange;"
+                  ><%= i + 1%>. <%= playerData[i].player %></span
+                ><span style="margin-left: 25%; color: aquamarine;"
+                  ><%= playerData[i].score %> points</span
+                >
+              </p>
+              <% }; %>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <a href="//rebrand.ly/codebros" target="_blank"
+            ><p>&copy; A product of Khoi Nguyen</p></a
+          >
+        </footer>
+      </main>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.24.0/dist/phaser.min.js"></script>
+    <script src="/scene/StartScene.js"></script>
+    <script src="/scene/PlayScene.js"></script>
+    <script src="/scene/game.js"></script>
+    <script src="/js/tutorial.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

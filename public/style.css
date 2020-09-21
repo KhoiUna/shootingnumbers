@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0 auto;
+  font-family: "Press Start 2P", cursive;
+}
+
+.container {
+  width: 500px;
+}
+
+body {
+  background-color: rgba(179, 179, 178, 0.658);
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+header {
+  padding-top: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+header p {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#gameDiv {
+  margin-top: 10%;
+}
+
+/* Style tutorial*/
+.tutorial-container {
+  width: 500px;
+  text-align: center;
+  margin-top: 5%;
+}
+.tutorial {
+  border: 3px solid black;
+  padding: 3%;
+  background-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.tutorial #title {
+  color: red;
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 3%;
+}
+.tutorial #instructions {
+  padding: 2%;
+  line-height: 150%;
+}
+.tutorial .buttons {
+  margin-top: 3%;
+}
+.tutorial .buttons button {
+  cursor: pointer;
+}
+.tutorial .buttons p {
+  padding: 5px;
+}
+
+/* Style score-display*/
+.score-container {
+  width: 500px;
+  text-align: center;
+  margin-top: 5%;
+  display: none;
+}
+.score-form {
+  border: 3px solid black;
+  padding: 3%;
+  background-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.score-form #title {
+  color: rgb(240, 236, 36);
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 3%;
+  line-height: 150%;
+}
+.score-form #player-score {
+  font-size: 30px;
+  margin-top: 3%;
+}
+.score-form form {
+  margin-top: 3%;
+}
+.score-form form label,
+.score-form form input {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.score-form form button {
+  cursor: pointer;
+  margin-top: 3%;
+  background-color: rgb(20, 214, 20);
+}
+.score-form form button p {
+  padding: 5px;
+}
+
+/* Style leaderboard */
+.leaderboard-container {
+  width: 450px;
+}
+.leaderboard {
+  margin-top: 5%;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: rgb(101, 107, 100);
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.leaderboard #title {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  font-size: 20px;
+  font-weight: bold;
+  color: yellow;
+  text-decoration: underline;
+}
+.leaderboard .players-display {
+  padding-top: 3%;
+  line-height: 200%;
+}
+
+/* Style footer */
+footer {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+footer a {
+  color: black;
+}
