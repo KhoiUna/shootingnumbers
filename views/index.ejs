@@ -27,14 +27,14 @@
             id="insImg"
             width="150px"
             alt="Instruction images"
-            style="visibility: hidden;"
+            style="visibility: hidden"
           />
           <div class="buttons">
-            <button id="skip" style="background-color: red;">
+            <button id="skip" style="background-color: red">
               <p>SKIP</p>
             </button>
-            <button id="next" style="background-color: rgb(20, 214, 20);">
-              <p style="color: white;">NEXT</p>
+            <button id="next" style="background-color: rgb(20, 214, 20)">
+              <p style="color: white">NEXT</p>
             </button>
           </div>
         </div>
@@ -43,39 +43,39 @@
       <div class="score-container">
         <div class="score-form">
           <p id="title">
-            Type your name then <span style="color: red;">CLICK ENTER</span> to
+            Type your name then <span style="color: red">CLICK ENTER</span> to
             be on the leaderboard!
           </p>
-          <p style="color: rgb(0, 132, 255);">Your Score:</p>
+          <p style="color: rgb(0, 132, 255)">Your Score:</p>
           <p id="player-score"></p>
 
           <form action="/leaderboard/submit" method="POST" autocomplete="off">
             <label for="playername">Name: </label>
             <input type="text" name="playername" id="playername" required />
             <button type="submit" id="submit">
-              <p style="color: white;">ENTER</p>
+              <p style="color: white">ENTER</p>
             </button>
           </form>
         </div>
       </div>
 
       <main>
-        <div id="gameDiv" style="visibility: hidden;"></div>
+        <div id="gameDiv" style="visibility: hidden"></div>
 
         <div class="leaderboard-container">
           <div class="leaderboard">
             <p id="title">LEADERBOARD</p>
-            <p style="margin-top: 5%; text-align: center;">
-              <span style="margin-right: 10%; color: aqua;">PLAYERS:</span>
-              <span style="margin-left: 10%; color: #32cd32;">SCORE:</span>
+            <p style="margin-top: 5%; text-align: center">
+              <span style="margin-right: 10%; color: aqua">PLAYERS:</span>
+              <span style="margin-left: 10%; color: #32cd32">SCORE:</span>
             </p>
             <div class="players-display">
               <% playerData %> <%for(let i = 0; i < playerData.length; i ++) {
               %>
               <p>
-                <span style="color: orange;"
+                <span style="color: orange"
                   ><%= i + 1%>. <%= playerData[i].player %></span
-                ><span style="margin-left: 25%; color: aquamarine;"
+                ><span style="margin-left: 25%; color: aquamarine"
                   ><%= playerData[i].score %> points</span
                 >
               </p>
