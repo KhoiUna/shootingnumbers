@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const { Pool } = require("pg");
 const morgan = require("morgan");
 const express = require("express");
@@ -7,20 +9,17 @@ const PORT = process.env.PORT || 8000;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
 });
 pool.connect();
 
 app.use(express.json(), morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.set("view engine", "ejs"); //Enable to render .ejs files
+app.set("view engine", "ejs");
 
 //Helper functions
 const addToDb = (playername, score) => {
-  const query = "INSERT INTO player_info (player, score) VALUES ($1, $2)";
+  const query = "INSERT INTO player_info(player, score) VALUES ($1, $2)";
   pool.query(query, [playername, score], (err) => {
     if (err) throw err;
     console.log("Add to database!");
@@ -57,5 +56,4 @@ app.use("/leaderboard/submit", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Listen on port ${PORT}`);
-  console.log("------------------------");
 });
