@@ -8,7 +8,7 @@ class StartScene extends Phaser.Scene {
     this.load.image("platform", "asset/platform.png");
     this.load.image("enemy", "asset/enemy.png");
     this.load.image("shoot", "asset/shoot.png");
-    let numArr = [
+    [
       "zero",
       "one",
       "two",
@@ -19,10 +19,9 @@ class StartScene extends Phaser.Scene {
       "seven",
       "eight",
       "nine",
-    ];
-    for (let i of numArr) {
+    ].forEach((i) => {
       this.load.image(`${i}`, `asset/${i}.png`);
-    }
+    });
   }
 
   create() {
