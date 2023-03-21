@@ -25,6 +25,7 @@ class PlayScene extends Phaser.Scene {
   constructor() {
     super({ key: "PlayScene" });
   }
+
   //Helper Methods
   //Generate math questions method
   mathGen() {
@@ -41,6 +42,7 @@ class PlayScene extends Phaser.Scene {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
     }
+
     //Add bullet function
     const addBullet = (number) => {
       gameState.bullet = this.physics.add
@@ -51,12 +53,14 @@ class PlayScene extends Phaser.Scene {
         )
         .setScale(0.15)
         .setGravityY(-200);
+
       //Add collider between bullet and platform
       this.physics.add.collider(
         gameState.bullet,
         gameState.platform,
         (bullet) => {
           bullet.destroy();
+
           if (bulletNumArr[0] == answer[0] && gameState.active) {
             this.cameras.main.shake(100, 0.05, true);
             gameState.spriteHp.width -= 34.1;
@@ -65,15 +69,18 @@ class PlayScene extends Phaser.Scene {
               gameState.score -= 5;
             }
           }
+
           bulletNumArr.shift();
         }
       );
+
       //Add collider between bullet and sprite
       this.physics.add.collider(
         gameState.bullet,
         gameState.sprite,
         (bullet) => {
           bullet.destroy();
+
           //Condition if sprite catches correct bomb and wrong bomb
           if (bulletNumArr[0] == answer[0]) {
             answer = answer.substring(1, answer.length); //remove first digit of the answer
@@ -86,6 +93,7 @@ class PlayScene extends Phaser.Scene {
               gameState.score -= 5;
             }
           }
+
           bulletNumArr.shift();
         }
       );
