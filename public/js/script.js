@@ -19,7 +19,3 @@ function sendPlayerInfo() {
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(data);
 }
-
-submitButton.addEventListener("pointerup", () => {
-  sendPlayerInfo();
-});
