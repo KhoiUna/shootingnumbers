@@ -4,21 +4,19 @@ const instruction = document.querySelector("#instructions");
 const insImg = document.querySelector("#insImg");
 const skipButton = document.querySelector("#skip");
 const nextButton = document.querySelector("#next");
+
 //Declare instructions obj
 const insObj = {
   one: {
-    ins:
-      "Your enemy shows you a math question and you have to calculate it in your head.",
+    ins: "Your enemy shows you a math question and you have to calculate it in your head.",
     pic: "./img/insOne.png",
   },
   two: {
-    ins:
-      "Enemy will drop bullets. You have to catch the correct numbers from left to right and avoid the wrong ones (using ARROW keys to move and jump). Moreover, you cannot let the correct ones hit the ground, too.",
+    ins: "Enemy will drop bullets. You have to catch the correct numbers from left to right and avoid the wrong ones (using ARROW keys to move and jump). Moreover, you cannot let the correct ones hit the ground, too.",
     pic: "./img/insTwo.png",
   },
   three: {
-    ins:
-      "After you catch all the correct numbers, you have a chance to shoot your enemy using SPACEBAR key. The numbers you've caught are shown below.",
+    ins: "After you catch all the correct numbers, you have a chance to shoot your enemy using SPACEBAR key. The numbers you've caught are shown below.",
     pic: "./img/insThree.png",
   },
   four: {
