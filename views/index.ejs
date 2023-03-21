@@ -42,14 +42,16 @@
 
       <div class="score-container">
         <div class="score-form">
-          <p id="title">
-            Type your name then <span style="color: red">CLICK ENTER</span> to
-            be on the leaderboard!
-          </p>
+          <p id="title">Type your name and submit to be on the leaderboard!</p>
           <p style="color: rgb(0, 132, 255)">Your Score:</p>
           <p id="player-score"></p>
 
-          <form action="/leaderboard/submit" method="POST" autocomplete="off">
+          <form
+            action="/leaderboard/submit"
+            method="POST"
+            autocomplete="off"
+            onsubmit="sendPlayerInfo()"
+          >
             <label for="playername">Name: </label>
             <input type="text" name="playername" id="playername" required />
             <button type="submit" id="submit">
