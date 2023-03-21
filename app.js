@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8000;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-pool.connect();
+pool.connect().catch((error) => console.error("Database connection failed!"));
 
 app.use(express.json(), morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -26,22 +26,18 @@ const addToDb = (playername, score) => {
   });
 };
 
-let playerData;
-const getDb = (res) => {
-  const query =
-    "SELECT player, score FROM player_info ORDER BY score DESC LIMIT 3";
-  pool.query(query, (err, result) => {
-    if (err) throw err;
-    playerData = result.rows;
-    res.render("index.ejs", { playerData: playerData });
-  });
+const getDb = async () => {
+  const { rows } = await pool.query(
+    "SELECT player, score FROM player_info ORDER BY score DESC LIMIT 3"
+  );
+  return rows;
 };
 
-//Routes
-app.get("/", (req, res) => {
-  setTimeout(() => {
-    getDb(res);
-  }, 200);
+app.get("/", async (req, res) => {
+  const playerData = await getDb();
+  console.log(playerData);
+
+  res.render("index.ejs", { playerData });
 });
 
 app.post("/leaderboard", (req, res) => {
