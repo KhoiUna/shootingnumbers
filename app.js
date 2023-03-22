@@ -13,17 +13,24 @@ const pool = new Pool({
 pool.connect().catch((error) => console.error("Database connection failed!"));
 
 app.use(express.json(), morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 //Helper functions
-const addToDb = (playername, score) => {
-  const query = "INSERT INTO player_info(player, score) VALUES ($1, $2)";
-  pool.query(query, [playername, score], (err) => {
-    if (err) throw err;
-    console.log("Add to database!");
-  });
+const addToDb = async (playername, score) => {
+  try {
+    const response = await pool.query(
+      "INSERT INTO player_info(player, score) VALUES ($1, $2)",
+      [playername, score]
+    );
+
+    if (response) return true;
+
+    return;
+  } catch (error) {
+    console.error("Error saving player");
+    return;
+  }
 };
 
 const getDb = async () => {
@@ -35,19 +42,22 @@ const getDb = async () => {
 
 app.get("/", async (req, res) => {
   const playerData = await getDb();
-  console.log(playerData);
-
-  res.render("index.ejs", { playerData });
+  return res.render("index.ejs", { playerData });
 });
 
-app.post("/leaderboard", (req, res) => {
-  let playername = req.body.playername;
-  let score = req.body.score;
-  addToDb(playername, score);
-});
+app.post("/api/leaderboard", async (req, res) => {
+  const { playername, score } = req.body;
 
-app.use("/leaderboard/submit", (req, res) => {
-  res.redirect("/");
+  if (await addToDb(playername, score))
+    return res.json({
+      success: true,
+      error: false,
+    });
+
+  return res.json({
+    success: false,
+    error: true,
+  });
 });
 
 app.listen(PORT, () => {
