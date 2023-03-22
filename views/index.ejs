@@ -57,12 +57,7 @@
           <p style="color: rgb(0, 132, 255)">Your Score:</p>
           <p id="player-score"></p>
 
-          <form
-            action="/leaderboard/submit"
-            method="POST"
-            autocomplete="off"
-            onsubmit="sendPlayerInfo()"
-          >
+          <form autocomplete="off" onsubmit="sendPlayerInfo(event)">
             <label for="playername">Name: </label>
             <input type="text" name="playername" id="playername" required />
             <button type="submit" id="submit">
