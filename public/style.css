@@ -131,6 +131,7 @@ header p {
 .leaderboard .players-display {
   padding-top: 3%;
   line-height: 200%;
+  text-align: left;
 }
 
 /* Style footer */
