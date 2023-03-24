@@ -1,3 +1,7 @@
 # Shooting Numbers
 
-A fun math game made with Phaser3 framework, along with NodeJS Express and Postgres database.
+# Built with
+
+- Phaser3 JS
+- NodeJS Express
+- PostgreSQL
