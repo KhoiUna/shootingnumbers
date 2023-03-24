@@ -7,6 +7,7 @@ let bulletShot = false;
 let loopOnce = true;
 let addScoreAnswer = true;
 let minusScoreBulletHit = true;
+let bulletGenCount = 0; //if this variable
 
 //Show popup score-container
 const scoreContainer = document.querySelector(".score-container");
@@ -29,19 +30,19 @@ class PlayScene extends Phaser.Scene {
   //Helper Methods
   //Generate math questions method
   mathGen() {
-    let firstNum = Math.floor(Math.random() * 100);
-    let secondNum = Math.floor(Math.random() * 100);
+    const firstNum = Math.floor(Math.random() * 100);
+    const secondNum = Math.floor(Math.random() * 100);
     answer = (firstNum + secondNum).toString();
     return `${firstNum} + ${secondNum}`;
   }
 
   //Generate bullet method
   bulletGen() {
-    function getRandomIntInclusive(min, max) {
+    const getRandomIntInclusive = (min, max) => {
       min = Math.ceil(min);
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-    }
+    };
 
     //Add bullet function
     const addBullet = (number) => {
@@ -61,10 +62,10 @@ class PlayScene extends Phaser.Scene {
         (bullet) => {
           bullet.destroy();
 
-          if (bulletNumArr[0] == answer[0] && gameState.active) {
+          if (bulletNumArr[0] === parseInt(answer[0]) && gameState.active) {
             this.cameras.main.shake(100, 0.05, true);
             gameState.spriteHp.width -= 34.1;
-            //reduce score when correct bullet hits platform
+            //Reduce score when correct bullet hits platform
             if (minusScoreBulletHit) {
               gameState.score -= 5;
             }
@@ -82,7 +83,7 @@ class PlayScene extends Phaser.Scene {
           bullet.destroy();
 
           //Condition if sprite catches correct bomb and wrong bomb
-          if (bulletNumArr[0] == answer[0]) {
+          if (bulletNumArr[0] === parseInt(answer[0])) {
             answer = answer.substring(1, answer.length); //remove first digit of the answer
             caughtNumArr.push(bulletNumArr[0]);
           } else if (gameState.active) {
