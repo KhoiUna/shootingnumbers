@@ -4,24 +4,22 @@ class StartScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("sprite", "asset/sprite.png");
-    this.load.image("platform", "asset/platform.png");
-    this.load.image("enemy", "asset/enemy.png");
-    this.load.image("shoot", "asset/shoot.png");
-    [
-      "zero",
-      "one",
-      "two",
-      "three",
-      "four",
-      "five",
-      "six",
-      "seven",
-      "eight",
-      "nine",
-    ].forEach((i) => {
-      this.load.image(`${i}`, `asset/${i}.png`);
-    });
+    this.load.image("sprite", "asset/sprite.webp");
+    this.load.image("platform", "asset/platform.webp");
+    this.load.image("enemy", "asset/enemy.webp");
+    this.load.image("shoot", "asset/shoot.webp");
+
+    // Load bullet images
+    this.load.image("zero", "asset/zero.webp");
+    this.load.image("one", "asset/one.webp");
+    this.load.image("two", "asset/two.webp");
+    this.load.image("three", "asset/three.webp");
+    this.load.image("four", "asset/four.webp");
+    this.load.image("five", "asset/five.webp");
+    this.load.image("six", "asset/six.webp");
+    this.load.image("seven", "asset/seven.webp");
+    this.load.image("eight", "asset/eight.webp");
+    this.load.image("nine", "asset/nine.webp");
   }
 
   create() {
