@@ -287,6 +287,7 @@ class PlayScene extends Phaser.Scene {
       } else {
         gameState.sprite.setVelocityX(0);
       }
+
       //Execute if the space key is pressed
       if (gameState.cursor.up.isDown && gameState.sprite.body.touching.down) {
         gameState.sprite.setVelocityY(-300);
@@ -336,6 +337,7 @@ class PlayScene extends Phaser.Scene {
         fontSize: "15px",
         fill: "#32CD32",
       });
+
       //Display score
       this.add.text(62, 350, `Your score: ${gameState.score * 10}`, {
         fontFamily: "'Press Start 2P'",
@@ -343,6 +345,7 @@ class PlayScene extends Phaser.Scene {
         fill: "#32CD32",
       });
       showPopupScore();
+
       //Make sprite bounce and move
       if (loopOnce) {
         gameState.sprite.setBounce(1);
